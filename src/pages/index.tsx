@@ -1,67 +1,52 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import NameEntity from '@/@core/domain/entity/Name'
-import { BaseComponentProps } from '@/types/global'
-import { Registry, container } from '@/@core/infra/container-registry'
-import NameHttpGeteway from '@/@core/infra/geteway/NameHttpGeteway'
 import { GetServerSidePropsContext } from 'next'
-import { setCookie } from 'nookies'
-import Link from 'next/link'
-import AxiosAdapter from '@/@core/infra/http/AxiosAdapter'
-
-interface Props extends BaseComponentProps { }
 
 export default function Page() {
-  const { names } = PageCore()
-  const inputRef = useRef(null)
+  // const { auth } = useAppSelector((e) => e)
 
-  const setToken = async () => {
-    setCookie(null, 'token', inputRef.current?.value, { path: '/' })
-  }
+  // function logIn() {
+  //   container.get<AuthService>('authService').logIn({
+  //     email: 'email@email.com',
+  //     password: '1234',
+  //   })
+  // }
+  // function logOut() {
+  //   container.get<IAuthService>('authService').logOut()
+  // }
 
   return (
     <div className='page-example'>
-      <h1>Top 10 names</h1>
+      <h1>Página: início</h1>
 
+      {/* 
       <ul className='links'>
         <li><Link href='/'>Início</Link></li>
         <li><Link href='/teste'>teste</Link></li>
       </ul>
 
-      <div>
-        <input type="text" placeholder='token' ref={inputRef} />
-        <button onClick={setToken}>setToken</button>
-      </div>
-
-
-      <ul className='name-list'>
-        {names.map(el => <li className='name-item' key={el.id}>{el.name}</li>)}
+      <ul>
+        <li><button onClick={logIn}>logIn</button></li>
+        <li><button onClick={logOut}>logOut</button></li>
       </ul>
+
+      <p>{auth.user.name ? auth.user.name : 'vazio'}</p> 
+      */}
     </div>
   )
 }
 
 export const getServerSideProps = async (ctx: GetServerSidePropsContext) => {
-  const httpClient = new AxiosAdapter(ctx)
-  const http = new NameHttpGeteway(httpClient, '/users')
+  // const httpClient = new AxiosAdapter(axios, ctx)
+  // const http = new NameHttpGeteway(httpClient, '/users')
 
-  await http.getAll<NameEntity[]>()
+  // await http.getAll<NameEntity[]>()
 
   return { props: {} }
 }
 
 const PageCore = () => {
-  const http = container.get<NameHttpGeteway>(Registry.http)
-
   const [names, setNames] = React.useState<NameEntity[]>([])
-
-  async function buscarDados() {
-    const res = await http.getAll<NameEntity[]>()
-    // setNames(res.map((el: NameEntity) => ({ id: el.id, name: el.name, email: el.email })))
-  }
-
-  React.useEffect(() => {
-    buscarDados()
-  }, [])
 
   return {
     names
