@@ -1,10 +1,3 @@
-import React from 'react'
+import { ListTodosPage } from "@/@core/presentation/ListTodos";
 
-export default function Page() {
-  return (
-    <div className='page-example'>
-      <h1>Página: list-todos</h1>
-
-    </div>
-  )
-}
+export default ListTodosPage

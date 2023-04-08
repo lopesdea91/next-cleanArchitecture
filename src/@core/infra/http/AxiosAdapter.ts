@@ -1,6 +1,6 @@
-import axios, { AxiosStatic } from 'axios'
-import HttpClient from "./HttpClient";
 import { GetServerSidePropsContext } from 'next';
+import { AxiosStatic } from 'axios'
+import HttpClient from "@/@core/infra/http/HttpClient";
 
 function sleep() {
   return new Promise((resolve) => setTimeout(resolve, 1000));
@@ -25,20 +25,21 @@ export default class AxiosAdapter implements HttpClient {
     })
   }
 
-  async get<T>(url: string): Promise<T> {
-    const res = await this.httpClient.get<T>(url)
-    return res.data
+  async get<T>(url: string) {
+    const { status, data } = await this.httpClient.get<T>(url)
+
+    return { status, data }
   }
-  async post<F>(url: string, body: F): Promise<void> {
-    const res = await this.httpClient.post(url, body)
-    return res.data
+  async post<T, F>(url: string, body: F) {
+    const { status, data } = await this.httpClient.post(url, body)
+    return { status, data }
   }
-  async put<F>(url: string, body: F): Promise<void> {
-    const res = await this.httpClient.put(url, body)
-    return res.data
+  async put<T, F>(url: string, body: F) {
+    const { status, data } = await this.httpClient.put(url, body)
+    return { status, data }
   }
-  async delete(url: string): Promise<void> {
-    const res = await this.httpClient.delete(url)
-    return res.data
+  async delete<T>(url: string) {
+    const { status, data } = await this.httpClient.delete(url)
+    return { status, data }
   }
 }

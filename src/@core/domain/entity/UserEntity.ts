@@ -1,13 +1,13 @@
-export interface IUser {
+export interface IUserEntity {
   id: number
   name: string
   username: string
   email: string
 }
 
-export class User {
+export class UserEntity {
   constructor(
-    readonly user: IUser
+    readonly user: IUserEntity
   ) { }
 
   getFullName(): string {

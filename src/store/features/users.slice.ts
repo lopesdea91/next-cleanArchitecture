@@ -1,9 +1,9 @@
-import { User } from "@/@core/domain/entity/User";
+import { UserEntity } from "@/@core/domain/entity/UserEntity";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface IUsersState {
-  list: User[]
-  defailt: User | null
+  list: UserEntity[]
+  defailt: UserEntity | null
 }
 const initialState: IUsersState = {
   list: [],
@@ -13,10 +13,10 @@ export const usersSlice = createSlice({
   name: 'users',
   initialState,
   reducers: {
-    setList(state, action: { payload: User[] }) {
+    setList(state, action: { payload: UserEntity[] }) {
       state.list = action.payload
     },
-    setDetail(state, action: { payload: User | null }) {
+    setDetail(state, action: { payload: UserEntity | null }) {
       state.defailt = action.payload
     },
   }

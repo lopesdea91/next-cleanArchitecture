@@ -1,8 +1,8 @@
-import { ITodo } from "@/@core/domain/entity/Todo";
+import { ITodoEntity } from "@/@core/domain/entity/TodoEntity";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface ITodoState {
-  list: ITodo[]
+  list: ITodoEntity[]
   isLoading: boolean
 }
 const initialState: ITodoState = {
@@ -13,7 +13,7 @@ export const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    setTodo(state, { payload }: { payload: ITodo[] }) {
+    setTodo(state, { payload }: { payload: ITodoEntity[] }) {
       state.list = payload
     }
   }
