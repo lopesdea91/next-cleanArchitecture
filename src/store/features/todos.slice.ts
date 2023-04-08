@@ -1,22 +1,33 @@
 import { ITodoEntity } from "@/@core/domain/entity/TodoEntity";
+import { TodoEntity } from "@/@core/domain/entity/TodoEntity";
 import { createSlice } from "@reduxjs/toolkit";
 
 export interface ITodoState {
-  list: ITodoEntity[]
-  isLoading: boolean
+  list: TodoEntity[]
+  todo: ITodoEntity
 }
 const initialState: ITodoState = {
   list: [],
-  isLoading: false
+  todo: {
+    id: 0,
+    title: ``,
+    completed: false
+  }
 }
-export const todoSlice = createSlice({
-  name: 'todo',
+export const todosSlice = createSlice({
+  name: 'todos',
   initialState,
   reducers: {
-    setTodo(state, { payload }: { payload: ITodoEntity[] }) {
+    setList(state, { payload }: { payload: TodoEntity[] }) {
       state.list = payload
-    }
+    },
+    setTodo(state, { payload }: { payload: Partial<ITodoEntity> }) {
+      state.todo = {
+        ...state.todo,
+        ...payload
+      }
+    },
   }
 })
 
-export const actionTodomSlice = todoSlice.actions
+export const actionTodomSlice = todosSlice.actions

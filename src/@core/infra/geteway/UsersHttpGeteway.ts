@@ -6,7 +6,7 @@ export interface UsersGeteway {
   getId: (id: number) => Promise<HttpClientResult<UserEntity | null>>
 }
 
-const url: string = 'https://jsonplaceholder.typicode.com/users'
+const url: string = 'http://localhost:3004/user'
 
 export class UsersHttpGeteway implements UsersGeteway {
   constructor(
@@ -22,8 +22,7 @@ export class UsersHttpGeteway implements UsersGeteway {
       data.map(el => users.push(new UserEntity({
         id: el.id,
         name: el.name,
-        email: el.email,
-        username: el.username,
+        lastName: el.lastName,
       })))
     }
 

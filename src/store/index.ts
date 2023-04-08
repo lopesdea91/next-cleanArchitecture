@@ -1,13 +1,13 @@
 import { AnyAction, Store, configureStore } from '@reduxjs/toolkit'
 import { authSlice } from './features/auth.slice'
-import { todoSlice } from './features/todos.slice'
+import { todosSlice } from './features/todos.slice'
 import { usersSlice } from './features/users.slice'
 import { systemSlice } from './features/system.slice'
 
 export const store = configureStore({
   reducer: {
     [authSlice.name]: authSlice.reducer,
-    [todoSlice.name]: todoSlice.reducer,
+    [todosSlice.name]: todosSlice.reducer,
     [usersSlice.name]: usersSlice.reducer,
     [systemSlice.name]: systemSlice.reducer,
   },

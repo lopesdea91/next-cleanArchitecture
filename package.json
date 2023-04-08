@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "server": "json-server --watch db.json --port 3004"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.0.1",
     "@madappgang/registry": "^3.0.7",
     "@reduxjs/toolkit": "^1.9.3",
     "@types/node": "18.15.11",
@@ -22,10 +24,13 @@
     "nookies": "^2.5.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.43.9",
     "react-redux": "^8.0.5",
-    "typescript": "5.0.3"
+    "typescript": "5.0.3",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@types/cookie": "^0.5.1"
+    "@types/cookie": "^0.5.1",
+    "json-server": "^0.17.3"
   }
 }

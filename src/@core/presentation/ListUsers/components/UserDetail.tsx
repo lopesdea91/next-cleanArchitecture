@@ -17,7 +17,6 @@ export const UserDetail = () => {
   return (
     <div className={`item-detail ${show ? '--show' : ''}`}>
       <p>id: {loading ? '...' : detail?.user.id}</p>
-      <p>email: {loading ? '...' : detail?.user.email}</p>
       <p>fullName: {loading ? '...' : detail?.getFullName()}</p>
 
       <button type='button' onClick={close}>limpar</button>

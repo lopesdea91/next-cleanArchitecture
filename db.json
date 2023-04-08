@@ -1,0 +1,36 @@
+{
+  "user": [
+    {
+      "id": 1,
+      "name": "anderson",
+      "lastName": "lopes"
+    },
+    {
+      "id": 2,
+      "name": "nino",
+      "lastName": "neto"
+    }
+  ],
+  "todo": [
+    {
+      "title": "task 1",
+      "completed": true,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "task 2",
+      "completed": true
+    },
+    {
+      "id": 3,
+      "title": "task 3",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "title": "task 4",
+      "completed": false
+    }
+  ]
+}

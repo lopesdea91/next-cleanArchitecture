@@ -108,6 +108,20 @@ li {
   list-style-type: none;
 }
 
+button {
+  padding: 0.25rem 0.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  transition: background 0.2s;
+}
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+button:not(:disabled):hover {
+  background: var(--color-white-ligth);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -187,15 +201,7 @@ body,
   flex-wrap: wrap;
 }
 .list-item button {
-  padding: 0.25rem 0.5rem;
   margin: 0 0.25rem 1rem auto;
-  border: none;
-  border-radius: 0.25rem;
-  transition: background 0.2s;
-  cursor: pointer;
-}
-.list-item button:hover {
-  background: var(--color-white-ligth);
 }
 .item-detail {
   margin: 1rem 0;
@@ -231,21 +237,86 @@ body,
 .item-detail button:hover {
   background: var(--color-white-ligth);
 }
-/* old */
 
-/* .name-list {
+.todo-wrapper {
   padding: 1rem 0;
 }
-.name-item {
-  padding: 0.5rem 0;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  transition: 0.22s;
+.todo-wrapper > * {
+  border: 1px solid var(--color-white-ligth);
+  box-shadow: 0 0.25rem 0.5rem 0rem var(--color-white-ligth);
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
-.name-item:hover {
-  background-color: var(--color-white-ligth);
-  color: var(--background-end-rgb);
+@media (min-width: 600px) {
+  .todo-wrapper {
+    display: flex;
+    gap: 1rem;
+  }
 }
-.name-item:not(:last-child) {
-  border-bottom: 1px solid var(--color-white-ligth);
-} */
+.todo-wrapper-title {
+  font-size: 14px;
+  line-height: 1;
+}
+.todo-form {
+  flex: 1;
+}
+.todo-form-footer {
+  display: flex;
+  gap: 1rem;
+}
+.todo-container-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.todo-container-input input {
+  display: block;
+  padding: 0.5rem;
+}
+.todo-container-input span {
+  color: red;
+  font-size: 12px;
+  line-height: 1;
+  margin: -0.25rem 0 0.5rem;
+}
+.todo-list {
+  flex: 1;
+  overflow: hidden;
+}
+.todo-list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 0.5rem 0.5rem;
+}
+.todo-list ul li {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.075);
+}
+.todo-list-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.todo-list-item-info span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid;
+  font-size: 14px;
+  line-height: 1;
+  color: var(--color-white-ligth);
+}
+.todo-list-item-info p {
+}
+.todo-list-item-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.todo-list-item-actions button {
+  min-width: 90px;
+}

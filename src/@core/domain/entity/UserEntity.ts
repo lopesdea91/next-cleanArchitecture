@@ -1,8 +1,7 @@
 export interface IUserEntity {
   id: number
   name: string
-  username: string
-  email: string
+  lastName: string
 }
 
 export class UserEntity {
@@ -11,6 +10,6 @@ export class UserEntity {
   ) { }
 
   getFullName(): string {
-    return `${this.user.name} ${this.user.username}`
+    return `${this.user.name} ${this.user.lastName}`
   }
 }
